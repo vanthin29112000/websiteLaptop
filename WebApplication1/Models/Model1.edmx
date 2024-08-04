@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CartItems">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="InvoiceDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShippingAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Technology" Type="varchar" MaxLength="255" />
+          <Property Name="NumberOfCores" Type="varchar" MaxLength="255" />
+          <Property Name="NumberOfThreads" Type="varchar" MaxLength="255" />
+          <Property Name="CPUSpeed" Type="varchar" MaxLength="255" />
+          <Property Name="MaxSpeed" Type="varchar" MaxLength="255" />
+          <Property Name="CacheSize" Type="varchar" MaxLength="255" />
+          <Property Name="RAM" Type="varchar" MaxLength="255" />
+          <Property Name="RAMType" Type="varchar" MaxLength="255" />
+          <Property Name="RAMBusSpeed" Type="varchar" MaxLength="255" />
+          <Property Name="MaxRAMSupport" Type="varchar" MaxLength="255" />
+          <Property Name="Storage" Type="varchar" MaxLength="255" />
+          <Property Name="Screen" Type="varchar" MaxLength="255" />
+          <Property Name="Resolution" Type="varchar" MaxLength="255" />
+          <Property Name="ScreenTechnology" Type="varchar" MaxLength="255" />
+          <Property Name="GraphicsCard" Type="varchar" MaxLength="255" />
+          <Property Name="AudioTechnology" Type="varchar" MaxLength="255" />
+          <Property Name="PortsInfo" Type="text" />
+          <Property Name="WirelessConnectivity" Type="varchar" MaxLength="2000" />
+          <Property Name="Webcam" Type="varchar" MaxLength="2000" />
+          <Property Name="DimensionsAndWeight" Type="varchar" MaxLength="255" />
+          <Property Name="BatteryInfo" Type="varchar" MaxLength="255" />
+          <Property Name="KeyboardBacklight" Type="varchar" MaxLength="255" />
+          <Property Name="ProductName" Type="varchar" MaxLength="5000" />
+          <Property Name="Brand" Type="varchar" MaxLength="255" />
+          <Property Name="CurrentPrice" Type="int" />
+          <Property Name="OldPrice" Type="int" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Description" Type="text" />
+          <Property Name="ImageLinks" Type="text" />
+          <Property Name="ScanFrequency" Type="varchar" MaxLength="255" />
+          <Property Name="MemoryCard" Type="varchar" MaxLength="2000" />
+          <Property Name="OtherFunction" Type="varchar" MaxLength="2000" />
+          <Property Name="Material" Type="varchar" MaxLength="255" />
+          <Property Name="OperatingSystem" Type="varchar" MaxLength="255" />
+          <Property Name="LaunchTime" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="CartItems" EntityType="Self.CartItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="InvoiceDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Technology" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfCores" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfThreads" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CPUSpeed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MaxSpeed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CacheSize" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RAM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RAMType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RAMBusSpeed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MaxRAMSupport" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Storage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Screen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Resolution" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ScreenTechnology" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GraphicsCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AudioTechnology" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PortsInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="WirelessConnectivity" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Webcam" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DimensionsAndWeight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BatteryInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KeyboardBacklight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentPrice" Type="Int32" />
+          <Property Name="OldPrice" Type="Int32" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLinks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ScanFrequency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MemoryCard" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="OtherFunction" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LaunchTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EFFirstDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CartItems" EntityType="Self.CartItem" />
+          <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetail" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="EFFirstDatabaseEntities1">
+          <EntitySetMapping Name="CartItems">
+            <EntityTypeMapping TypeName="Database1Model.CartItem">
+              <MappingFragment StoreEntitySet="CartItems">
+                <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceDetails">
+            <EntityTypeMapping TypeName="Database1Model.InvoiceDetail">
+              <MappingFragment StoreEntitySet="InvoiceDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="Database1Model.Invoice">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Database1Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Technology" ColumnName="Technology" />
+                <ScalarProperty Name="NumberOfCores" ColumnName="NumberOfCores" />
+                <ScalarProperty Name="NumberOfThreads" ColumnName="NumberOfThreads" />
+                <ScalarProperty Name="CPUSpeed" ColumnName="CPUSpeed" />
+                <ScalarProperty Name="MaxSpeed" ColumnName="MaxSpeed" />
+                <ScalarProperty Name="CacheSize" ColumnName="CacheSize" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="RAMType" ColumnName="RAMType" />
+                <ScalarProperty Name="RAMBusSpeed" ColumnName="RAMBusSpeed" />
+                <ScalarProperty Name="MaxRAMSupport" ColumnName="MaxRAMSupport" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="Screen" ColumnName="Screen" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+                <ScalarProperty Name="ScreenTechnology" ColumnName="ScreenTechnology" />
+                <ScalarProperty Name="GraphicsCard" ColumnName="GraphicsCard" />
+                <ScalarProperty Name="AudioTechnology" ColumnName="AudioTechnology" />
+                <ScalarProperty Name="PortsInfo" ColumnName="PortsInfo" />
+                <ScalarProperty Name="WirelessConnectivity" ColumnName="WirelessConnectivity" />
+                <ScalarProperty Name="Webcam" ColumnName="Webcam" />
+                <ScalarProperty Name="DimensionsAndWeight" ColumnName="DimensionsAndWeight" />
+                <ScalarProperty Name="BatteryInfo" ColumnName="BatteryInfo" />
+                <ScalarProperty Name="KeyboardBacklight" ColumnName="KeyboardBacklight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="CurrentPrice" ColumnName="CurrentPrice" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageLinks" ColumnName="ImageLinks" />
+                <ScalarProperty Name="ScanFrequency" ColumnName="ScanFrequency" />
+                <ScalarProperty Name="MemoryCard" ColumnName="MemoryCard" />
+                <ScalarProperty Name="OtherFunction" ColumnName="OtherFunction" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="LaunchTime" ColumnName="LaunchTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="EFFirstDatabaseEntities1">
+    <EntitySetMapping Name="CartItems">
+      <EntityTypeMapping TypeName="Database1Model.CartItem">
+        <MappingFragment StoreEntitySet="CartItems">
+          <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceDetails">
+      <EntityTypeMapping TypeName="Database1Model.InvoiceDetail">
+        <MappingFragment StoreEntitySet="InvoiceDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="Database1Model.Invoice">
+        <MappingFragment StoreEntitySet="Invoices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Database1Model.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Technology" ColumnName="Technology" />
+          <ScalarProperty Name="NumberOfCores" ColumnName="NumberOfCores" />
+          <ScalarProperty Name="NumberOfThreads" ColumnName="NumberOfThreads" />
+          <ScalarProperty Name="CPUSpeed" ColumnName="CPUSpeed" />
+          <ScalarProperty Name="MaxSpeed" ColumnName="MaxSpeed" />
+          <ScalarProperty Name="CacheSize" ColumnName="CacheSize" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="RAMType" ColumnName="RAMType" />
+          <ScalarProperty Name="RAMBusSpeed" ColumnName="RAMBusSpeed" />
+          <ScalarProperty Name="MaxRAMSupport" ColumnName="MaxRAMSupport" />
+          <ScalarProperty Name="Storage" ColumnName="Storage" />
+          <ScalarProperty Name="Screen" ColumnName="Screen" />
+          <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+          <ScalarProperty Name="ScreenTechnology" ColumnName="ScreenTechnology" />
+          <ScalarProperty Name="GraphicsCard" ColumnName="GraphicsCard" />
+          <ScalarProperty Name="AudioTechnology" ColumnName="AudioTechnology" />
+          <ScalarProperty Name="PortsInfo" ColumnName="PortsInfo" />
+          <ScalarProperty Name="WirelessConnectivity" ColumnName="WirelessConnectivity" />
+          <ScalarProperty Name="Webcam" ColumnName="Webcam" />
+          <ScalarProperty Name="DimensionsAndWeight" ColumnName="DimensionsAndWeight" />
+          <ScalarProperty Name="BatteryInfo" ColumnName="BatteryInfo" />
+          <ScalarProperty Name="KeyboardBacklight" ColumnName="KeyboardBacklight" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="CurrentPrice" ColumnName="CurrentPrice" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageLinks" ColumnName="ImageLinks" />
+          <ScalarProperty Name="ScanFrequency" ColumnName="ScanFrequency" />
+          <ScalarProperty Name="MemoryCard" ColumnName="MemoryCard" />
+          <ScalarProperty Name="OtherFunction" ColumnName="OtherFunction" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+          <ScalarProperty Name="LaunchTime" ColumnName="LaunchTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

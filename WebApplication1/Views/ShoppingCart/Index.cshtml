@@ -1,0 +1,205 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebApplication1.Models.CartViewModel
+@using System.Globalization
+<link href="~/Content/Css/ShoppingCart.css" rel="stylesheet" type="text/css" />
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>}
+
+<div class="container-fluid" style="margin: 32px 0px">
+    <h4>Giỏ hàng</h4>
+    <div class="row g-4">
+        <div class="col-9">
+            <div class="shopping-cart__left">
+                <div class="item head">
+                    <div></div>
+                    <div>Tên sản phẩm</div>
+                    <div>Đơn giá</div>
+                    <div>Số lượng</div>
+                    <div>Tổng</div>
+                </div>
+                @if (Model.CartItems != null && Model.CartItems.Any())
+                {
+                    foreach (var item in Model.CartItems)
+                    {
+                        <div class="item value">
+                            <div class="product-info">
+                                @using (Html.BeginForm("RemoveFromCart", "ShoppingCart", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("ProductId", item.ProductId)
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-x"></i>
+                                    </button>
+                                }
+
+                                <img src=@item.ProductImage
+                                     alt="product" />
+                            </div>
+                            <div>
+                                @item.ProductName
+                            </div>
+                            <div>@(item.Price.HasValue ? item.Price.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</div>
+                            <div>
+                                <input type="number" value=@item.Quantity min="1" data-product-id="@item.ProductId"
+                                       class="quantity-input"></input>
+                            </div>
+                            <div>@(item.TotalPrice.HasValue ? item.TotalPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="shopping-cart__right">
+                <h5>Thông tin đơn hàng</h5>
+                <div class="payment">
+                    <p>Tổng thanh toán </p>
+                    <span>@(Model.TotalPrice.HasValue ? Model.TotalPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</span>
+                </div>
+
+                <button type="button" class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                    THANH TOÁN NGAY
+                </button>
+            </div>
+        </div>
+        <div class="modal fade"
+             id="staticBackdrop"
+             data-bs-backdrop="static"
+             data-bs-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Thông tin nhận hàng
+                        </h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <form class="row g-3 needs-validation" action="/ShoppingCart/CreateInvoice" method="post" novalidate>
+                        <div class="modal-body">
+                            <div class="col-12 mb-4">
+                                <label for="validationCustom01" class="form-label">
+                                    Họ tên khách hàng
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="validationCustom01"
+                                       name="CustomerName"
+                                       placeholder="Nhập họ tên khách hàng"
+                                       style="max-width : 100%"
+                                       required />
+                                <div class="valid-feedback"></div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label for="validationCustom02" class="form-label">
+                                    Số điện thoại
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="validationCustom02"
+                                       name="PhoneNumber"
+                                       placeholder="Nhập số điện thoại"
+                                       style="max-width : 100%"
+                                       required />
+                                <div class="valid-feedback"></div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label for="validationCustom02" class="form-label">
+                                    Địa chỉ nhận hàng
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="validationCustom02"
+                                       name="ShippingAddress"
+                                       placeholder="Nhập địa chỉ nhận hàng"
+                                       style="max-width : 100%"
+                                       required />
+                                <div class="valid-feedback"></div>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label for="validationCustom04" class="form-label">
+                                    Hình thức thanh toán
+                                </label>
+                                <select class="form-select"
+                                        id="validationCustom04"
+                                        style="max-width : 100%"
+                                        name="PaymentMethod"
+                                        required>
+                                    <option selected disabled value="">
+                                        -- Chọn hình thức thanh toán --
+                                    </option>
+                                    <option>Thanh toán khi nhận hàng</option>
+                                    <option>Thanh toán qua thẻ</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn hình thức thanh toán
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                Xác nhận
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.quantity-input').on('input', function () {
+                var productId = $(this).data('product-id');
+                var quantity = $(this).val();
+
+                // Gửi yêu cầu AJAX để cập nhật số lượng
+                $.ajax({
+                    url: '@Url.Action("UpdateQuantity", "ShoppingCart")',
+                    type: 'POST',
+                    data: {
+                        productId: productId,
+                        quantity: quantity
+                    },
+                    success: function (response) {
+                        // Thực hiện các hành động khi cập nhật thành công
+                        location.reload();
+                        console.log('Số lượng sản phẩm đã được cập nhật.');
+                    },
+                    error: function (xhr, status, error) {
+                        // Thực hiện các hành động khi có lỗi
+                        console.error('Có lỗi xảy ra khi cập nhật số lượng.');
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CartItems">
+    <Key>
+      <PropertyRef Name="CartItemId" />
+    </Key>
+    <Property Name="CartItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartId" Type="int" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="InvoiceDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ShippingAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Technology" Type="varchar" MaxLength="255" />
+    <Property Name="NumberOfCores" Type="varchar" MaxLength="255" />
+    <Property Name="NumberOfThreads" Type="varchar" MaxLength="255" />
+    <Property Name="CPUSpeed" Type="varchar" MaxLength="255" />
+    <Property Name="MaxSpeed" Type="varchar" MaxLength="255" />
+    <Property Name="CacheSize" Type="varchar" MaxLength="255" />
+    <Property Name="RAM" Type="varchar" MaxLength="255" />
+    <Property Name="RAMType" Type="varchar" MaxLength="255" />
+    <Property Name="RAMBusSpeed" Type="varchar" MaxLength="255" />
+    <Property Name="MaxRAMSupport" Type="varchar" MaxLength="255" />
+    <Property Name="Storage" Type="varchar" MaxLength="255" />
+    <Property Name="Screen" Type="varchar" MaxLength="255" />
+    <Property Name="Resolution" Type="varchar" MaxLength="255" />
+    <Property Name="ScreenTechnology" Type="varchar" MaxLength="255" />
+    <Property Name="GraphicsCard" Type="varchar" MaxLength="255" />
+    <Property Name="AudioTechnology" Type="varchar" MaxLength="255" />
+    <Property Name="PortsInfo" Type="text" />
+    <Property Name="WirelessConnectivity" Type="varchar" MaxLength="2000" />
+    <Property Name="Webcam" Type="varchar" MaxLength="2000" />
+    <Property Name="DimensionsAndWeight" Type="varchar" MaxLength="255" />
+    <Property Name="BatteryInfo" Type="varchar" MaxLength="255" />
+    <Property Name="KeyboardBacklight" Type="varchar" MaxLength="255" />
+    <Property Name="ProductName" Type="varchar" MaxLength="5000" />
+    <Property Name="Brand" Type="varchar" MaxLength="255" />
+    <Property Name="CurrentPrice" Type="int" />
+    <Property Name="OldPrice" Type="int" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Description" Type="text" />
+    <Property Name="ImageLinks" Type="text" />
+    <Property Name="ScanFrequency" Type="varchar" MaxLength="255" />
+    <Property Name="MemoryCard" Type="varchar" MaxLength="2000" />
+    <Property Name="OtherFunction" Type="varchar" MaxLength="2000" />
+    <Property Name="Material" Type="varchar" MaxLength="255" />
+    <Property Name="OperatingSystem" Type="varchar" MaxLength="255" />
+    <Property Name="LaunchTime" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="CartItems" EntityType="Self.CartItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

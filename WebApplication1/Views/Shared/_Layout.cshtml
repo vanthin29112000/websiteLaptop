@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <link href="~/Content/Css/Home.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header id="main-header">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active" href="#">
+                    <img src="~/Content/Images/li-xi_638424978952013804.jpg" class="d-block w-100" alt="Banner" />
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="~/Content/Images/Capture.JPG" width="60" height="60" class="d-inline-block align-top logo" alt="Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Danh mục
+                            </a>
+                            <form id="brandFilterForm" method="get" action="/Products/Index">
+                                <input type="hidden" name="SelectedBrand" id="selectedBrand" value="" />
+                            </form>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-category="dell">LAPTOP DELL</a></li>
+                                <li><a class="dropdown-item" href="#" data-category="lenovo">LENOVO THINKPAD</a></li>
+                                <li><a class="dropdown-item" href="#" data-category="hp">LAPTOP HP</a></li>
+                                <li><a class="dropdown-item" href="#" data-category="samsung">LAPTOP SAMSUNG</a></li>
+                                <li><a class="dropdown-item" href="#" data-category="surface">SURFACE</a></li>
+                                @*<li><a class="dropdown-item" href="#" >LAPTOP ĐỒ HỌA</a></li>*@
+                                <li><a class="dropdown-item" href="#" data-category="gaming">LAPTOP GAMING</a></li>
+                                @*<li><a class="dropdown-item" href="#">LINH KIỆN MÁY TÍNH</a></li>*@
+                                <li><a class="dropdown-item" href="#" data-category="lg">Laptop LG</a></li>
+                            </ul>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/ShoppingCart">Giỏ hàng</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="#">Liên hệ</a>
+                        </li>
+                    </ul>
+
+
+                    <form class="d-flex" role="search" method="get" action="@Url.Action("Index", "Products")">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search" name="SearchQuery" value="@ViewBag.SearchQuery">
+                        <button class="btn btn-outline-success" type="submit">Tìm</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    @RenderBody()
+
+    <footer class="footer container-fluid">
+        <div class="row" style="margin-bottom: 32px;">
+            <div class="col-12 col-sm-12 col-md-6 col-xl-3" style="padding-top: 32px;">
+                <strong>Laptop store</strong>
+                <div class="text-muted footer-item">
+                    Laptop Store rất hân hạnh được phục vụ quý khách. Chúng tôi sẽ cố gắng hơn nữa để cảm ơn sự tin tưởng quý khách đã dành cho Laptop Store.
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-xl-3" style="padding-top: 32px;">
+                <strong>Thông tin liên hệ</strong>
+                <div class="text-muted footer-item">
+                    Đinh Tiên Hoàng, P.Bến Nghé, Quận 1
+                </div>
+                <div class="d-flex align-items-center footer-item">
+                    <div style="font-weight: 600; margin-right: 4px;">Hotline 1:</div>
+                    <a href="tel:1900123456" class="link-primary" style="text-decoration: none;">1900123456</a>
+                </div>
+                <div class="d-flex align-items-center footer-item">
+                    <div style="font-weight: 600; margin-right: 4px;">Hotline 2:</div>
+                    <a href="tel:190056789" class="link-primary" style="text-decoration: none;">190056789</a>
+                </div>
+                <div class="d-flex align-items-center footer-item">
+                    <div style="font-weight: 600; margin-right: 4px;">Email:</div>
+                    <a href="mailto:laptop.store@gmail.com" class="link-primary" style="text-decoration: none;">laptop.store@gmail.com</a>
+                </div>
+                <div class="d-flex align-items-center footer-item">
+                    <div style="font-weight: 600;">Mạng xã hội:</div>
+                    <div>
+                        <img src="~/Content/Images/facebook.png" class="icon-social">
+                        <img src="~/Content/Images/youtube.png" class="icon-social">
+                        <img src="~/Content/Images/instagram.png" class="icon-social">
+                        <img src="~/Content/Images/social-media.png" class="icon-social">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-xl-3" style="padding-top: 32px;">
+                <strong>Chính sách và quy định</strong>
+                <div class="text-muted footer-item">Chính sách giao hàng và kiểm hàng</div>
+                <div class="text-muted footer-item">Chính sách đổi trả</div>
+                <div class="text-muted footer-item">Chính sách thanh toán</div>
+                <div class="text-muted footer-item">Chính sách bảo hành</div>
+                <div class="text-muted footer-item">Chính sách bảo mật thông tin</div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-xl-3" style="padding-top: 32px;">
+                <strong>Đăng ký nhận thông báo</strong>
+                <div class="text-muted footer-item" style="margin-bottom: 8px;">Đăng ký nhận thông báo để không bỏ lỡ bất kỳ khuyến mãi nào</div>
+                <div class="sign-in-email row w-100 footer-item">
+                    <input type="text" placeholder="Nhập email của bạn" class="btn__sign-in-email col-8">
+                    <button class="btn btn-success col-4">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center font-monospace copyright">
+            © Copyright 2024. Phát triển bởi Laptop Store
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function () {
+            var header = document.getElementById("main-header");
+            var navbar = header.querySelector(".navbar");
+            var carousel = document.getElementById("carouselExample");
+
+            if (window.pageYOffset > 0) {
+                navbar.classList.add("fixed-top");
+                carousel.classList.add("hidden");
+            } else {
+                navbar.classList.remove("fixed-top");
+                carousel.classList.remove("hidden");
+            }
+        };
+    </script>
+
+    <script>
+        const nextButtonCarousel = document.querySelector('.btn-next');
+        const prevButtonCarousel = document.querySelector('.btn-pre');
+        const wrapper = document.getElementById("test");
+        const frameContainer = wrapper.querySelector(".container-carousel");
+        const framesAll = frameContainer.querySelectorAll(".frame");
+        const framesNum = framesAll.length;
+        for (let i = 0; i < framesNum; i++) {
+            framesAll[i].style.order = i + 1;
+        }
+        function scrollClick(direction) {
+            console.log("chuyển")
+            for (let i = 0; i < framesNum; i++) {
+                let current_order = Number(framesAll[i].style.order);
+                if (direction == "forward") {
+                    if (current_order == 1) {
+                        var new_order = framesNum;
+                    } else {
+                        var new_order = Number(current_order) - 1;
+                    }
+                } else if (direction == "backward") {
+                    if (current_order == framesNum) {
+                        var new_order = 1;
+                    } else {
+                        var new_order = Number(current_order) + 1;
+                    }
+                }
+                framesAll[i].style.order = new_order;
+            }
+        };
+
+        nextButtonCarousel.addEventListener('click', function () {
+            scrollClick("backward");
+        });
+
+        prevButtonCarousel.addEventListener('click', function () {
+            scrollClick("forward");
+        });
+    </script>
+
+    <script>
+
+        const wiperTrack = document.querySelector(".wiper-track");
+        const wipes = Array.from(wiperTrack.children);
+        const wipePrevBtn = document.querySelector(".wiper-button__right");
+        const wipeNextBtn = document.querySelector(".wiper-button__left");
+        const wipeWidth = wipes[0].getBoundingClientRect().width;
+        console.log("array", wipes);
+        const arrowsBehaviour = (wipePrevBtn, wipeNextBtn, index) => {
+            if (index === 1) {
+                wipePrevBtn.classList.add("is-hidden");
+                wipeNextBtn.classList.remove("is-hidden");
+            } else if (index === wipes.length - 2) {
+                wipePrevBtn.classList.remove("is-hidden");
+                wipeNextBtn.classList.add("is-hidden");
+            } else {
+                wipePrevBtn.classList.remove("is-hidden");
+                wipeNextBtn.classList.remove("is-hidden");
+            }
+        };
+
+        const wipeSlide = (wiperTrack, activeSlide, nextSlide, targetIndex) => {
+            if (targetIndex >= 1 && targetIndex !== wipes.length - 2) {
+                wiperTrack.style.transform =
+                    "translateX(-" + (wipeWidth + 24) * (targetIndex - 1) + "px)";
+                activeSlide.classList.remove("active-swipe");
+                //activeSlide.style.transform = "scale(1)";
+                nextSlide.classList.add("active-swipe");
+                //nextSlide.style.transform = "scale(1.1)";
+            }
+
+        };
+
+        wipeNextBtn.addEventListener("click", (e) => {
+            const activeSlide = wiperTrack.querySelector(".active-swipe");
+            const nextSlide = activeSlide.nextElementSibling;
+            const targetIndex = wipes.findIndex((slide) => slide === nextSlide);
+            wipeSlide(wiperTrack, activeSlide, nextSlide, targetIndex);
+            console.log("index", targetIndex);
+            arrowsBehaviour(wipePrevBtn, wipeNextBtn, targetIndex);
+        });
+        wipePrevBtn.addEventListener("click", (e) => {
+            const activeSlide = wiperTrack.querySelector(".active-swipe");
+            const nextSlide = activeSlide.previousElementSibling;
+            const targetIndex = wipes.findIndex((slide) => slide === nextSlide);
+            wipeSlide(wiperTrack, activeSlide, nextSlide, targetIndex);
+            console.log("index", targetIndex);
+
+            arrowsBehaviour(wipePrevBtn, wipeNextBtn, targetIndex);
+        });
+    </script>
+
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleDiv(divId) {
+            console.log("haha")
+            var div = document.getElementById(divId);
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "block";
+            } else {
+                div.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        // Kiểm tra xem CartID có tồn tại trong localStorage không
+        let cartId = localStorage.getItem('CartID');
+
+        if (cartId === null) {
+            // Nếu không tồn tại, tạo một GUID mới
+            cartId = generateUUID();
+
+            // Lưu CartID mới vào localStorage
+            localStorage.setItem('CartID', cartId);
+
+            console.log('New CartID generated and saved:', cartId);
+        } else {
+            console.log('CartID exists:', cartId);
+        }
+
+        // Hàm tạo GUID
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+    </script>
+
+    <script>
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault(); // Ngăn chặn liên kết mặc định
+
+                var selectedBrand = this.getAttribute('data-category');
+                document.getElementById('selectedBrand').value = selectedBrand;
+
+                // Tự động submit form
+                document.getElementById('brandFilterForm').submit();
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy URL hiện tại
+            var currentUrl = window.location.pathname;
+
+            // Lấy tất cả các liên kết trong menu
+            var navLinks = document.querySelectorAll('.nav-item a');
+
+            // Duyệt qua tất cả các liên kết
+            navLinks.forEach(function (link) {
+                // Lấy đường dẫn của liên kết
+                var linkUrl = link.getAttribute('href');
+
+                // So sánh đường dẫn hiện tại với đường dẫn của liên kết
+                if (currentUrl === linkUrl) {
+                    link.classList.add('active'); // Thêm lớp active vào liên kết nếu nó trùng khớp
+                }
+            });
+        });
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+    </html>

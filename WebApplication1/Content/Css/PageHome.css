@@ -1,0 +1,357 @@
+﻿.hot-sale {
+    border: 1px solid #bfbfbf;
+    height: 156px;
+    padding: 16px;
+    display: flex;
+}
+
+.hot-sale__item {
+    display: flex;
+    align-items: center;
+}
+
+    .hot-sale__item:hover {
+        display: flex;
+        align-items: center;
+    }
+
+.product {
+}
+
+.product__price {
+    display: flex;
+}
+
+.product-price__value {
+    margin-bottom: 0;
+}
+
+
+.wrapper {
+    max-width: 1200px;
+    margin: 32px auto;
+    overflow: hidden;
+}
+
+.buttons {
+    width: 100%;
+    margin: 0 0 1em 0;
+    text-align: right;
+}
+
+    .buttons a {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 200%;
+    }
+
+        .buttons a:first-child {
+            margin: 0 10px 0 0;
+        }
+
+.container-carousel {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.frame {
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 50%;
+    max-width: 50%;
+}
+
+    .frame i {
+        font-size: 500%;
+        font-weight: bold;
+        color: #fff;
+    }
+
+@media (min-width: 400px) {
+    .frame {
+        min-width: 33.33333333333%;
+        max-width: 33.33333333333%;
+    }
+}
+
+@media (min-width: 768px) {
+    .frame {
+        min-width: 25%;
+        max-width: 25%;
+    }
+}
+
+@media (min-width: 1040px) {
+    .frame {
+        min-width: 16.666666666%;
+        max-width: 16.666666666%;
+    }
+}
+
+
+
+.policy-item {
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.policy-icon {
+    width: 84px;
+    height: 84px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+.policy-item i {
+    width: 56px;
+    height: 56px;
+    padding: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #007745;
+    background-color: #fff;
+    font-size: 32px;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+
+.policy-icon__item {
+    width: 32px;
+    height: 32px;
+    padding: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    font-size: 32px;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+.policy-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #007745;
+    margin-top: 8px;
+}
+
+
+h1 {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wiper-track {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 1.5rem;
+    margin: 0 auto;
+    transition: transform 0.4s ease-in;
+    padding: 0 1rem;
+}
+
+.wiper-item {
+    width: 250px;
+    height: 500px;
+    position: relative;
+    transition: scale 0.2s linear;
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px rgb(227 224 224);
+}
+
+.wiper {
+    /* max-width: 960px; */
+    position: relative;
+    margin: 0 auto;
+}
+
+.product-item {
+    background: #ECECEC;
+    padding: 4px;
+    border-radius: 4px;
+    margin: 16px 0px;
+}
+
+.product .name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product .title {
+    color: #616161;
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-item .title span {
+    font-weight: 600;
+    color: var(--color-default);
+    margin-right: 6px;
+}
+
+.product .price p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #6D6E72;
+    margin: 0;
+    text-decoration: line-through;
+}
+
+.product .price h4 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #E30019;
+    margin: 0;
+}
+
+.product .price span {
+    padding: 0 4px;
+    background: #FFEDED;
+    border-radius: 2px;
+    color: #E30019;
+    border: 1px solid #E30019;
+    line-height: 16px;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+.product .price .discount {
+    display: flex;
+    align-items: center;
+}
+
+.active-swipe {
+    transform: scale(1.1);
+}
+
+.wiper-button {
+    position: absolute;
+    top: 50%;
+    background: transparent;
+    border: none;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.wiper-button__left {
+    right: 12px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.wiper__image-button {
+    right: 50%;
+    top: 50%;
+    position: absolute;
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+    background-color: white;
+    border: none;
+    font-size: 1.4rem;
+    transform: translateY(-50%) translateX(50%);
+    cursor: pointer;
+}
+
+.wiper-wrapper {
+    /* max-width: 660px; */
+    overflow: hidden;
+    padding: 2.5rem 0.5rem;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    border-radius: 16px;
+    margin-bottom: 16px;
+}
+
+.swiper__image-button {
+    right: 50%;
+    top: 50%;
+    position: absolute;
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+    background-color: white;
+    border: none;
+    font-size: 1rem;
+    transform: translateY(-50%) translateX(50%);
+    cursor: pointer;
+}
+
+    .swiper__image-button:hover {
+        color: red;
+    }
+
+.wiper__image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    margin: 64px 0px;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.wiper-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    border: 1px solid #007745;
+}
+
+.wiper-button {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 1px solid #dcdcdc;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.wiper-button__left {
+    right: 0px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.wiper-button__right {
+    left: 0px;
+}
+
+.btn-wiper {
+    font-size: 1.2em;
+}

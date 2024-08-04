@@ -1,0 +1,103 @@
+﻿body{
+    padding : 0px;
+    margin : 0px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.home-page__banner {
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 5px 10px 4px 4px #888888;
+}
+
+*, p {
+    margin: 0;
+    padding: 0;
+}
+
+.home-page__banner-img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.home-page__container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    width: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.footer {
+    background-color: #f5f6f5;
+    padding-top: 0px;
+}
+
+.icon-social {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    margin: 0px 4px;
+    cursor: pointer;
+}
+
+.sign-in-email {
+    padding: 8px;
+    background-color: white;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.btn__sign-in-email {
+    border: none;
+    background-color: none;
+}
+
+    .btn__sign-in-email:active {
+        border: none;
+        background-color: #f5f6f5;
+    }
+
+    .btn__sign-in-email:focus {
+        border: none;
+        background-color: white;
+        outline: none;
+    }
+
+.footer-item {
+    margin-top: 8px;
+}
+
+.copyright {
+    border-top: 1px solid rgb(210, 210, 210);
+    padding: 16px;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.hidden {
+    display: none;
+}
+
+.header-placeholder {
+    height: 70px; /* Height of the fixed header */
+}
+
+.carousel-banner {
+    margin: 8px 0px;
+    border-radius: 8px;
+}
+

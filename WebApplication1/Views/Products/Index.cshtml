@@ -1,0 +1,566 @@
+﻿@*@model List<WebApplication1.Models.Product>*@
+@using System.Globalization
+@model WebApplication1.Models.ProductFilterViewModel
+
+
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Css/Product.css" rel="stylesheet" type="text/css" />
+
+
+<form id="filterForm" method="get" action="@Url.Action("Index", "Products")">
+    <div class=" products-container">
+
+        @if (Model.SearchQuery != null)
+        {<h4 style="margin-left : 32px">Từ khóa tìm kiếm : @Model.SearchQuery</h4>}
+        <div class="row g-0">
+            <div class="filter col-3">
+                <div class="filter-container ">
+                    <div class="filter-list">
+                        <h4>Lọc sản phẩm</h4>
+
+                        <div class="filter-item">
+                            <div class="filter-dropdown">
+                                <h6>Khoảng giá </h6>
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"
+                                       onClick="toggleDiv('f-1')">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="f-item" id="f-1" style="display:block">
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="true"
+                                           id="10" name="IsUnder10MillionChecked" onchange="this.form.submit()" @(Model.IsUnder10MillionChecked ? "checked" : "") />
+                                    <label class="form-check-label" for="10">
+                                        Dưới 10 triệu
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="true"
+                                           id="10-15" name="Is10To15MillionChecked" onchange="this.form.submit()" @(Model.Is10To15MillionChecked ? "checked" : "") />
+                                    <label class="form-check-label" for="10-15">
+                                        10 triệu - 15 triệu
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="true"
+                                           id="15-20" name="Is15To20MillionChecked" onchange="this.form.submit()" @(Model.Is15To20MillionChecked ? "checked" : "") />
+                                    <label class="form-check-label" for="15-20">
+                                        15 triệu - 20 triệu
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="true"
+                                           id="20-30" name="Is20To30MillionChecked" onchange="this.form.submit()" @(Model.Is20To30MillionChecked ? "checked" : "") />
+                                    <label class="form-check-label" for="20-30">
+                                        20 triệu - 30 triệu
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="true"
+                                           id="30-50" name="Is30To50MillionChecked" onchange="this.form.submit()" @(Model.Is30To50MillionChecked ? "checked" : "") />
+                                    <label class="form-check-label" for="30-50">
+                                        30 triệu - 50 triệu
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="true"
+                                           id="50-100" name="Is50To100MillionChecked" onchange="this.form.submit()" @(Model.Is50To100MillionChecked ? "checked" : "") />
+                                    <label class="form-check-label" for="50-100">
+                                        50 triệu - 100 triệu
+                                    </label>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="filter-item">
+                            <div class="filter-dropdown">
+                                <h6>Kính thước màn hình</h6>
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"
+                                       onClick="toggleDiv('f-2')">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="f-item" id="f-2" style="display:block">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="12.5" name="SelectedSizeScreen" value="12.5" onchange="this.form.submit()" @(Model.SelectedSizeScreen.Contains("12.5") ? "checked" : "") />
+                                    <label class="form-check-label" for="12.5">
+                                        12.5"
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="13" name="SelectedSizeScreen" value="13" onchange="this.form.submit()" @(Model.SelectedSizeScreen.Contains("13") ? "checked" : "") />
+                                    <label class="form-check-label" for="13">
+                                        13"
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="14" name="SelectedSizeScreen" value="14" onchange="this.form.submit()" @(Model.SelectedSizeScreen.Contains("14") ? "checked" : "") />
+                                    <label class="form-check-label" for="14">
+                                        14"
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="15.6" name="SelectedSizeScreen" value="15.6" onchange="this.form.submit()" @(Model.SelectedSizeScreen.Contains("15.6") ? "checked" : "") />
+                                    <label class="form-check-label" for="15.6">
+                                        15.6"
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="16" name="SelectedSizeScreen" value="16" onchange="this.form.submit()" @(Model.SelectedSizeScreen.Contains("16") ? "checked" : "") />
+                                    <label class="form-check-label" for="16">
+                                        16"
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="17.3" name="SelectedSizeScreen" value="17.3" onchange="this.form.submit()" @(Model.SelectedSizeScreen.Contains("17.3") ? "checked" : "") />
+                                    <label class="form-check-label" for="17.3">
+                                        17.3"
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="filter-item">
+                            <div class="filter-dropdown">
+                                <h6>Tấm nền màn hình </h6>
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"
+                                       onClick="toggleDiv('f-3')">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="f-item" id="f-3" style="display:block">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="IPS" name="SelectedScreenTechnology" value="IPS" onchange="this.form.submit()" @(Model.SelectedScreenTechnology.Contains("IPS") ? "checked" : "") />
+                                    <label class="form-check-label" for="IPS">
+                                        IPS
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="OLED" name="SelectedScreenTechnology" value="OLED" onchange="this.form.submit()" @(Model.SelectedScreenTechnology.Contains("OLED") ? "checked" : "") />
+                                    <label class="form-check-label" for="OLED">
+                                        OLED
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="TN" name="SelectedScreenTechnology" value="TN" onchange="this.form.submit()" @(Model.SelectedScreenTechnology.Contains("TN") ? "checked" : "") />
+                                    <label class="form-check-label" for="TN">
+                                        TN
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="WVA" name="SelectedScreenTechnology" value="WVA" onchange="this.form.submit()" @(Model.SelectedScreenTechnology.Contains("WVA") ? "checked" : "") />
+                                    <label class="form-check-label" for="WVA">
+                                        WVA
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-item">
+                            <div class="filter-dropdown">
+                                <h6>Độ phân giải </h6>
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"
+                                       onClick="toggleDiv('f-4')">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="f-item" id="f-4" style="display:block">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="HD" name="SelectedResolution" value="HD" onchange="this.form.submit()" @(Model.SelectedResolution.Contains("HD") ? "checked" : "") />
+                                    <label class="form-check-label" for="HD">
+                                        HD
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="FullHD" name="SelectedResolution" value="Full" onchange="this.form.submit()" @(Model.SelectedResolution.Contains("Full") ? "checked" : "") />
+                                    <label class="form-check-label" for="FullHD">
+                                        FullHD
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="2K" name="SelectedResolution" value="2K" onchange="this.form.submit()" @(Model.SelectedResolution.Contains("2K") ? "checked" : "") />
+                                    <label class="form-check-label" for="2K">
+                                        2K
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="3K" name="SelectedResolution" value="3K" onchange="this.form.submit()" @(Model.SelectedResolution.Contains("3K") ? "checked" : "") />
+                                    <label class="form-check-label" for="3K">
+                                        3K
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="4K" name="SelectedResolution" value="4K" onchange="this.form.submit()" @(Model.SelectedResolution.Contains("4K") ? "checked" : "") />
+                                    <label class="form-check-label" for="4K">
+                                        4K
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-item">
+                            <div class="filter-dropdown">
+                                <h6>CPU</h6>
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"
+                                       onClick="toggleDiv('f-5')">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="f-item" id="f-5" style="display:block">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="corei3" name="SelectedCPU" value="Core i3" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Core i3") ? "checked" : "") />
+                                    <label class="form-check-label" for="corei3">
+                                        Core i3
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Corei5" name="SelectedCPU" value="Core i5" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Core i5") ? "checked" : "") />
+                                    <label class="form-check-label" for="Corei5">
+                                        Core i5
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Core i7" name="SelectedCPU" value="Core i7" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Core i7") ? "checked" : "") />
+                                    <label class="form-check-label" for="Core i7">
+                                        Core i7
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Core i9" name="SelectedCPU" value="Core i9" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Core i9") ? "checked" : "") />
+                                    <label class="form-check-label" for="Core i9">
+                                        Core i9
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ultra5" name="SelectedCPU" value="Ultra 5" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ultra 5") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ultra5">
+                                        Ultra 5
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ultra7" name="SelectedCPU" value="Ultra 7" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ultra 7") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ultra7">
+                                        Ultra 7
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ultra9" name="SelectedCPU" value="Ultra 9" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ultra 9") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ultra9">
+                                        Ultra 9
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ryzen 3" name="SelectedCPU" value="Ryzen 3" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ryzen 3") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ryzen 3">
+                                        Ryzen 3
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ryzen 5" name="SelectedCPU" value="Ryzen 5" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ryzen 5") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ryzen 5">
+                                        Ryzen 5
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ryzen 7" name="SelectedCPU" value="Ryzen 7" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ryzen 7") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ryzen 7">
+                                        Ryzen 7
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="Ryzen 9" name="SelectedCPU" value="Ryzen 9" onchange="this.form.submit()" @(Model.SelectedCPU.Contains("Ryzen 9") ? "checked" : "") />
+                                    <label class="form-check-label" for="Ryzen 9">
+                                        Ryzen 9
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-item">
+                            <div class="filter-dropdown">
+                                <h6>RAM </h6>
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"
+                                       onClick="toggleDiv('f-6')">
+                                    </i>
+                                </span>
+                            </div>
+                            <div class="f-item" id="f-6" style="display:block">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="4GB" name="SelectedRAM" value="4GB" onchange="this.form.submit()" @(Model.SelectedRAM.Contains("4GB") ? "checked" : "") />
+                                    <label class="form-check-label" for="4GB">
+                                        4GB
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="8GB" name="SelectedRAM" value="8GB" onchange="this.form.submit()" @(Model.SelectedRAM.Contains("8GB") ? "checked" : "") />
+                                    <label class="form-check-label" for="8GB">
+                                        8GB
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="16GB" name="SelectedRAM" value="16GB" onchange="this.form.submit()" @(Model.SelectedRAM.Contains("16GB") ? "checked" : "") />
+                                    <label class="form-check-label" for="16GB">
+                                        16GB
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="32GB" name="SelectedRAM" value="32GB" onchange="this.form.submit()" @(Model.SelectedRAM.Contains("32GB") ? "checked" : "") />
+                                    <label class="form-check-label" for="32GB">
+                                        32GB
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="64GB" name="SelectedRAM" value="64GB" onchange="this.form.submit()" @(Model.SelectedRAM.Contains("64GB") ? "checked" : "") />
+                                    <label class="form-check-label" for="64GB">
+                                        64GB
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-product col-9">
+                <div class="sort-product">
+                    Sắp xếp theo:
+                    <button type="submit" class="sort-btn @(Model.SortColumn == "outStanding" ? "btn-sort__active" : "")" name="SortColumn" value="outStanding">
+                        Nổi bật
+                    </button>
+
+                    <button type="submit" class="sort-btn @(Model.SortColumn == "disBest" ? "btn-sort__active" : "")" name="SortColumn" value="disBest">
+                        Giảm giá tốt
+                    </button>
+                    <button type="submit" class=" sort-btn @(Model.SortColumn == "ascPrice" ? "btn-sort__active" : "")" name="SortColumn" value="ascPrice">
+                        Giá từ thấp đến cao
+                    </button>
+                    <button type="submit" class="sort-btn @(Model.SortColumn == "desPrice" ? "btn-sort__active" : "")" name="SortColumn" value="desPrice">
+                        Giá từ cao đến thấp
+                    </button>
+                </div>
+                <ul class="row g-0 p-0" style="margin-top : 8px">
+                    @foreach (var item in Model.Products)
+                    {
+                        <li class=" product col-3">
+                            <a href="/products/details?id=@item.Id" style="text-decoration : none ; color : black">
+                                <div class="p-item">
+                                    <img class="wiper__image"
+                                         src=@item.ImageLinks.Split(new[] { ", " }, StringSplitOptions.None).FirstOrDefault()
+                                         alt="background-image" />
+                                    <h5 class="name">@item.ProductName</h5>
+                                    <div class="product-item">
+                                        <div class="title">
+                                            <span>Màn hình</span>@item.Screen @item.Resolution
+                                        </div>
+                                        <div class="title">
+                                            <span>CPU</span>@item.Technology
+                                        </div>
+                                        <div class="title">
+                                            <span>VGA</span>@item.GraphicsCard
+                                        </div>
+                                        <div class="title">
+                                            <span>RAM</span>@item.MaxRAMSupport @item.RAMType @item.RAMBusSpeed
+                                        </div>
+                                        <div class="title">
+                                            <span>SDD</span>@item.Storage
+                                        </div>
+                                    </div>
+                                    <div class="price">
+                                        @if (item.OldPrice != 0 && item.CurrentPrice != 0)
+                                        {
+                                            <p class="root">@(item.OldPrice.HasValue ? item.OldPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</p>
+                                            <div class="discount">
+                                                <h4>@(item.CurrentPrice.HasValue ? item.CurrentPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</h4> <span>-@item.Discount%</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <p class="root" style="height : 16px"></p>
+
+                                            <div class="discount">
+                                                <h4>Liên hệ</h4>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </a>
+
+                        </li>
+                    }
+                </ul>
+
+
+                @if (ViewBag.noOfPage > 1)
+                {
+                    <div class="pagination-container" style="display:flex;justify-content : center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+
+                                @if (ViewBag.Page > 1)
+                                {
+                                    <a class="page-link" href="javascript:void(0)" aria-label="Previous" onclick="changePage(@ViewBag.Page - 1)">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                }
+
+                                @for (int i = 1; i <= ViewBag.noOfPage; i++)
+                                {
+                                    if (i == ViewBag.Page)
+                                    {
+                                        <li class="page-item"><a href="javascript:void(0)" class="page-link @(i == ViewBag.Page ? "active" : "")" onclick="changePage(@i)">@i</a></li>
+                                    }
+                                    else if (i >= ViewBag.Page - 2 && i <= ViewBag.Page + 2)
+                                    {
+                                        <li class="page-item"><a href="javascript:void(0)" class="page-link @(i == ViewBag.Page ? "active" : "")" onclick="changePage(@i)">@i</a></li>
+                                    }
+                                    else if (i == 1 || i == ViewBag.noOfPage)
+                                    {
+                                        <li class="page-item"><a href="javascript:void(0)" class="page-link @(i == ViewBag.Page ? "active" : "")" onclick="changePage(@i)">@i</a></li>
+                                    }
+                                    else if (i == ViewBag.Page - 3 || i == ViewBag.Page + 3)
+                                    {
+                                        <li class="page-item"><a href="javascript:void(0)" class="page-link ">...</a></li>
+                                    }
+                                }
+
+                                @if (ViewBag.Page < ViewBag.noOfPage)
+                                {
+
+                                    <a class="page-link" href="javascript:void(0)" aria-label="Next" onclick="changePage(@ViewBag.Page + 1)">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                }
+
+                            </ul>
+                        </nav>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="SearchQuery" value="@Model.SearchQuery" />
+    <input type="hidden" name="SelectedBrand" value="@Model.SelectedBrand" />
+</form>
+@section Scripts {
+    
+
+<script>
+    function changePage(page) {
+        
+
+        var form = document.getElementById('filterForm');
+        var formData = new FormData(form);
+
+        // Lấy thông tin tìm kiếm từ ô input
+        var searchQuery = document.querySelector('input[name="SearchQuery"]').value;
+
+        // Lấy giá trị brandFilter từ input ẩn hoặc từ form
+        var brandFilter = document.querySelector('input[name="SelectedBrand"]').value;
+
+        // Chuyển đổi FormData thành query string
+        var queryString = new URLSearchParams(formData).toString();
+
+        // Xây dựng URL với search query trước, sau đó là trang và query string
+        @*var url = "@Url.Action('Index', 'Products')" + "?SearchQuery=" + searchQuery + "&page=" + page + "&" + queryString;*@
+
+        @{
+        
+        var urlAction = Url.Action("Index", "Products");
+        }
+        var url = "@urlAction" + "?SearchQuery=" + encodeURIComponent(searchQuery) + "&page=" + page + "&" + queryString;
+
+
+        // Chuyển hướng tới URL
+        window.location.href = url;
+    }
+</script>
+}

@@ -1,0 +1,390 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+}
+@using System.Globalization
+@model List<WebApplication1.Models.Product>
+
+<link href="~/Content/Css/HomePages.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-banner" data-bs-ride="carousel" style="margin: 8px 0px">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://file.hstatic.net/200000722513/file/gearvn-xa-kho-slider.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://file.hstatic.net/200000722513/file/man_hinh_-_web_slider_800x400_65a0642fcf8349c484dc3f79b71c7deb.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://file.hstatic.net/200000722513/file/loa_xin_slider_55571db8742146cd85eef265cf950b35.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    @*==== Carousel category ====*@
+    <div id="test" class="wrapper">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="flex-fill w-100">Danh mục sản phẩm</h3>
+            <div class="buttons">
+                <a class="btn-next"
+                   href="#carouselExampleControls"
+                   role="button"
+                   data-slide="next">
+                    <i class="fa-solid fa-circle-chevron-left"></i>
+                </a>
+                <a class="btn-pre"
+                   href="#carouselExampleControls"
+                   role="button"
+                   data-slide="next">
+                    <i class="fa-solid fa-circle-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <form id="brandFilterForm" method="get" action="/Products/Index">
+            <input type="hidden" name="SelectedBrand" id="selectedBrand" value="" />
+        </form>
+        <div class="container-carousel">
+            <div class="frame">
+                <a href="#" data-category="Asus">
+                    <img src="~/Content/images/Category/asu_638159618788111097-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop Asus</h5>
+            </div>
+            <div class="frame">
+                <a href="#" data-category="Dell">
+                    <img src="~/Content/images/Category/del_638159618516432469-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop Dell</h5>
+            </div>
+            @*<div class="frame">
+                    <a >
+                        <img src="~/Content/images/Category/desig_638159619107981928-w.150-q.80.jpg" />
+                    </a>
+                    <h5 class="pt-8">Laptop đồ họa</h5>
+                </div>*@
+            <div class="frame">
+                <a href="#" data-category="gaming">
+                    <img src="~/Content/images/Category/gamin_638159619022147369-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop Gaming</h5>
+            </div>
+            <div class="frame">
+                <a href="#" data-category="hp">
+                    <img src="~/Content/images/Category/h_638159618706283760-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop HP</h5>
+            </div>
+            @*<div class="frame">
+                    <a >
+                        <img src="~/Content/images/Category/p_638159619247537734-w.150-q.80.jpg" />
+                    </a>
+                    <h5 class="pt-8">Linh kiện máy tính</h5>
+                </div>*@
+            <div class="frame">
+                <a href="#" data-category="samsung">
+                    <img src="~/Content/images/Category/samsun_638159618865042754-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop Samsung</h5>
+            </div>
+            <div class="frame">
+                <a href="#" data-category="surface">
+                    <img src="~/Content/images/Category/surfac_638159618953001630-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop Surface</h5>
+            </div>
+            <div class="frame">
+                <a href="#" data-category="lenovo">
+                    <img src="~/Content/images/Category/thinkpa_638159618614796253-w.150-q.80.jpg" />
+                </a>
+                <h5 class="pt-8">Laptop Thinkpad</h5>
+            </div>
+
+        </div>
+
+        <div class="row policy-container ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 policy-item ">
+                <div class="policy-icon">
+                    <i class="fa-solid fa-truck-fast "></i>
+                </div>
+                <div class="policy-title">Giao hàng toàn quốc</div>
+                <div class="text-muted">Miễn phí giao hàng toàn quốc</div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 policy-item ">
+                <div class="policy-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div class="policy-title">Hỗ trợ trực tuyến</div>
+                <div class="text-muted">Chúng tôi luôn hỗ trợ 24/7</div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 policy-item ">
+                <div class="policy-icon">
+                    <i class="fa-solid fa-tag"></i>
+                </div>
+                <div class="policy-title">Giá cả phải chăng</div>
+                <div class="text-muted">
+                    Chúng tôi luôn có giá tốt nhất trên thị trường
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 policy-item ">
+                <div class="policy-icon">
+                    <div class="policy-icon__item">
+                        <img src="~/Content/images/refund.png"
+                             alt="/"
+                             style="width : 48px ; height : 48px" />
+                    </div>
+                </div>
+                <div class="policy-title">Chính sách hoàn tiền</div>
+                <div class="text-muted">Hoàn tiền 100% nếu sản phẩm không tôt</div>
+            </div>
+        </div>
+        @*==== Danh sách nổi bật ====*@
+        <div>
+            <h1>Sản phẩm nổi bật</h1>
+
+            <div class="wiper">
+                <button class="wiper-button wiper-button__right">
+                    <i class="fa-solid fa-chevron-left btn-wiper"></i>
+                </button>
+                <div class="wiper-wrapper">
+                    <ul class="wiper-track">
+                        @{ 
+                            int i = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+
+                        <li class="wiper-item product @(i == 1 ? "active-swipe" : "")">
+                            <a href="/products/details?id=@item.Id" style="text-decoration : none ; color : black">
+                                <img class="wiper__image"
+                                     src=@item.ImageLinks.Split(new[] { ", " }, StringSplitOptions.None).FirstOrDefault()
+                                     alt="background-image" />
+                                <h5 class="name">@item.ProductName</h5>
+                                <div class="product-item">
+                                    <div class="title">
+                                        <span>Màn hình</span>@item.Screen @item.Resolution
+                                    </div>
+                                    <div class="title">
+                                        <span>CPU</span>@item.Technology
+                                    </div>
+                                    <div class="title">
+                                        <span>VGA</span>@item.GraphicsCard
+                                    </div>
+                                    <div class="title">
+                                        <span>RAM</span>@item.MaxRAMSupport @item.RAMType @item.RAMBusSpeed
+                                    </div>
+                                    <div class="title">
+                                        <span>SDD</span>@item.Storage
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    @if (item.OldPrice != 0 && item.CurrentPrice != 0)
+                                    {
+                                        <p class="root">@(item.OldPrice.HasValue ? item.OldPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</p>
+                                        <div class="discount">
+                                            <h4>@(item.CurrentPrice.HasValue ? item.CurrentPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</h4> <span>-@item.Discount%</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="root" style="height : 16px"></p>
+
+                                        <div class="discount">
+                                            <h4>Liên hệ</h4>
+                                        </div>
+                                    }
+                                </div>
+                                </a>
+                        </li>
+                            i += 1;
+                        }
+
+                        @*<li class="wiper-item product active-swipe">
+                            <img class="wiper__image"
+                                 src="https://laptopkhanhtran.vn/pic/product/lenovo-th_638230406378198405-w.250-q.80.png"
+                                 alt="background-image" />
+                            <h5 class="name">Thinkpad X1 Carbon Gen 11</h5>
+                            <div class="product-item">
+                                <div class="title">
+                                    <span>Màn hình</span>14″ 2.2K (2240 x 1400)
+                                </div>
+                                <div class="title">
+                                    <span>CPU</span>Core i7 1360p
+                                </div>
+                                <div class="title">
+                                    <span>VGA</span>Intel Iris Xe Graphics
+                                </div>
+                                <div class="title">
+                                    <span>RAM</span>DDR5 16Gb
+                                </div>
+                                <div class="title">
+                                    <span>SDD</span>256Gb
+                                </div>
+                            </div>
+                            <div class="price">
+                                <p class="root">28.000.000 đ</p>
+                                <div class="discount">
+                                    <h4>26.000.000 đ</h4> <span>-14%</span>
+                                </div>
+                            </div>
+                        </li>*@
+                        @*<li class="wiper-item product">
+                            <img class="wiper__image"
+                                 src="https://laptopkhanhtran.vn/pic/product/lenovo-th_638230406378198405-w.250-q.80.png"
+                                 alt="background-image" />
+                            <h5 class="name">Thinkpad X1 Carbon Gen 11</h5>
+                            <div class="product-item">
+                                <div class="title">
+                                    <span>Màn hình</span>14″ 2.2K (2240 x 1400)
+                                </div>
+                                <div class="title">
+                                    <span>CPU</span>Core i7 1360p
+                                </div>
+                                <div class="title">
+                                    <span>VGA</span>Intel Iris Xe Graphics
+                                </div>
+                                <div class="title">
+                                    <span>RAM</span>DDR5 16Gb
+                                </div>
+                                <div class="title">
+                                    <span>SDD</span>256Gb
+                                </div>
+                            </div>
+                            <div class="price">
+                                <p class="root">28.000.000 đ</p>
+                                <div class="discount">
+                                    <h4>26.000.000 đ</h4> <span>-14%</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="wiper-item product">
+                            <img class="wiper__image"
+                                 src="https://laptopkhanhtran.vn/pic/product/lenovo-th_638230406378198405-w.250-q.80.png"
+                                 alt="background-image" />
+                            <h5 class="name">Thinkpad X1 Carbon Gen 11</h5>
+                            <div class="product-item">
+                                <div class="title">
+                                    <span>Màn hình</span>14″ 2.2K (2240 x 1400)
+                                </div>
+                                <div class="title">
+                                    <span>CPU</span>Core i7 1360p
+                                </div>
+                                <div class="title">
+                                    <span>VGA</span>Intel Iris Xe Graphics
+                                </div>
+                                <div class="title">
+                                    <span>RAM</span>DDR5 16Gb
+                                </div>
+                                <div class="title">
+                                    <span>SDD</span>256Gb
+                                </div>
+                            </div>
+                            <div class="price">
+                                <p class="root">28.000.000 đ</p>
+                                <div class="discount">
+                                    <h4>26.000.000 đ</h4> <span>-14%</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="wiper-item product">
+                            <img class="wiper__image"
+                                 src="https://laptopkhanhtran.vn/pic/product/lenovo-th_638230406378198405-w.250-q.80.png"
+                                 alt="background-image" />
+                            <h5 class="name">Thinkpad X1 Carbon Gen 11</h5>
+                            <div class="product-item">
+                                <div class="title">
+                                    <span>Màn hình</span>14″ 2.2K (2240 x 1400)
+                                </div>
+                                <div class="title">
+                                    <span>CPU</span>Core i7 1360p
+                                </div>
+                                <div class="title">
+                                    <span>VGA</span>Intel Iris Xe Graphics
+                                </div>
+                                <div class="title">
+                                    <span>RAM</span>DDR5 16Gb
+                                </div>
+                                <div class="title">
+                                    <span>SDD</span>256Gb
+                                </div>
+                            </div>
+                            <div class="price">
+                                <p class="root">28.000.000 đ</p>
+                                <div class="discount">
+                                    <h4>26.000.000 đ</h4> <span>-14%</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="wiper-item product">
+                            <img class="wiper__image"
+                                 src="https://laptopkhanhtran.vn/pic/product/lenovo-th_638230406378198405-w.250-q.80.png"
+                                 alt="background-image" />
+                            <h5 class="name">Thinkpad X1 Carbon Gen 11</h5>
+                            <div class="product-item">
+                                <div class="title">
+                                    <span>Màn hình</span>14″ 2.2K (2240 x 1400)
+                                </div>
+                                <div class="title">
+                                    <span>CPU</span>Core i7 1360p
+                                </div>
+                                <div class="title">
+                                    <span>VGA</span>Intel Iris Xe Graphics
+                                </div>
+                                <div class="title">
+                                    <span>RAM</span>DDR5 16Gb
+                                </div>
+                                <div class="title">
+                                    <span>SDD</span>256Gb
+                                </div>
+                            </div>
+                            <div class="price">
+                                <p class="root">28.000.000 đ</p>
+                                <div class="discount">
+                                    <h4>26.000.000 đ</h4> <span>-14%</span>
+                                </div>
+                            </div>
+                        </li>*@
+                    </ul>
+                </div>
+                <button class="wiper-button wiper-button__left">
+                    <i class="fa-solid fa-chevron-left btn-wiper"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+
+    <script>
+        document.querySelectorAll('.container-carousel a').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                // Lấy giá trị của data-category
+                var category = this.getAttribute('data-category');
+
+                // Cập nhật giá trị cho trường hidden
+                document.getElementById('selectedBrand').value = category;
+
+                // Gửi form
+                document.getElementById('brandFilterForm').submit();
+            });
+        });
+    </script>
+}

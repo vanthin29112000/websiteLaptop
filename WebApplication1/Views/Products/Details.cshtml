@@ -1,0 +1,298 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Css/ProductDetail.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Css/Product.css" rel="stylesheet" type="text/css" />
+@using System.Globalization
+@model WebApplication1.Models.Product
+
+<div class="detail-container  row">
+    <div class="col-6">
+        <div class="detail__list-img">
+            <div class="detail__list-img-carousel">
+                <div id="carouselExampleControls"
+                     class="carousel slide"
+                     data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @{ int a = 0;
+
+                            foreach (string i in Model.ImageLinks.Split(','))
+                            {
+                                if (a == 0)
+                                {
+                                    <div class="carousel-item active">
+                                        <img src=@i
+                                             class="d-block w-100"
+                                             alt="..."
+                                             loading="lazy" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="carousel-item">
+                                        <img src=@i
+                                             class="d-block w-100"
+                                             alt="..."
+                                             loading="lazy" />
+                                    </div>
+                                }
+                                a += 1;
+
+                            }
+                        }
+
+                    </div>
+                    <button class="carousel-control-prev"
+                            type="button"
+                            data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                        <div class="btn-carousel__detail">
+                            <i class="fa-solid fa-chevron-left"></i>
+
+                        </div>
+                    </button>
+                    <button class="carousel-control-next"
+                            type="button"
+                            data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                        <div class="btn-carousel__detail">
+                            <i class="fa-solid fa-chevron-right"></i>
+
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="thumbnail-feature">
+
+                <div class="thumbnail-feature__item"
+                     type="button"
+                     data-bs-toggle="offcanvas"
+                     data-bs-target="#offcanvasWithBackdrop"
+                     aria-controls="offcanvasWithBackdrop">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Thông số kĩ thuật</p>
+                </div>
+                <div class="thumbnail-feature__item"
+                     data-bs-toggle="offcanvas"
+                     data-bs-target="#offcanvasWithBackdropNews"
+                     aria-controls="offcanvasWithBackdropNews">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p>Thông tin sản phẩm</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="offcanvas offcanvas-start"
+             tabindex="-1"
+             id="offcanvasWithBackdrop"
+             aria-labelledby="offcanvasWithBackdropLabel"
+             style="" width: 40%">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">
+                    Thông số kĩ thuật
+                </h5>
+                <button type="button"
+                        class="btn-close text-reset"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="content-configurations">
+                    <div class=" head">Bộ xử lý</div>
+                    <div class="row">
+                        <span>Công nghệ CPU:</span>@Model.Technology
+                    </div>
+                    <div class="row">
+                        <span>Số nhân:</span>@Model.NumberOfCores
+                    </div>
+                    <div class="row">
+                        <span>Số luồng:</span>@Model.NumberOfThreads
+                    </div>
+                    <div class="row">
+                        <span>Tốc độ CPU:</span>@Model.CPUSpeed
+                    </div>
+                    <div class="row">
+                        <span>Tốc độ tối đa:</span>@Model.MaxSpeed
+                    </div>
+                    <div class="row">
+                        <span>Bộ nhớ đệm:</span>@Model.CacheSize
+                    </div>
+                    <div class=" head">Bộ nhớ RAM, Ổ cứng</div>
+                    <div class="row">
+                        <span>RAM:</span>@Model.RAM
+                    </div>
+                    <div class="row">
+                        <span>Loại RAM:</span>@Model.RAMType
+                    </div>
+                    <div class="row">
+                        <span>Tốc độ Bus RAM:</span>@Model.RAMBusSpeed
+                    </div>
+                    <div class="row">
+                        <span>Hỗ trợ RAM tối đa:</span>@Model.MaxRAMSupport
+                    </div>
+                    <div class="row">
+                        <span>Ổ cứng:</span>@Model.Storage
+                    </div>
+                    <div class=" head">Màn hình</div>
+                    <div class="row">
+                        <span>Màn hình:</span>@Model.Screen
+                    </div>
+                    <div class="row">
+                        <span>Độ phân giải:</span>@Model.Resolution
+                    </div>
+                    <div class="row">
+                        <span>Tần số quét:</span>@Model.ScanFrequency
+                    </div>
+                    <div class="row">
+                        <span>Công nghệ màn hình:</span>@Model.ScreenTechnology
+                    </div>
+                    <div class=" head">Đồ họa và Âm thanh</div>
+                    <div class="row">
+                        <span>Card màn hình:</span>@Model.GraphicsCard
+                    </div>
+                    <div class="row">
+                        <span>Công nghệ âm thanh:</span> @Model.AudioTechnology
+                    </div>
+                    <div class=" head">
+                        Cổng kết nối &amp; tính năng mở rộng
+                    </div>
+                    <div class="row">
+                        <span>Cổng giao tiếp:</span>@Model.PortsInfo
+                    </div>
+                    <div class="row">
+                        <span>Kết nối không dây:</span>@Model.WirelessConnectivity
+                    </div>
+                    <div class="row">
+                        <span>Webcam:</span>@Model.Webcam
+                    </div>
+                    <div class=" head">Kích thước &amp; khối lượng</div>
+                    <div class="row">
+                        <span>Kích thước, khối lượng:</span>@Model.DimensionsAndWeight
+                    </div>
+                    <div class=" head">Thông tin khác</div>
+                    <div class="row">
+                        <span>Thông tin Pin:</span>@Model.BatteryInfo
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="offcanvas offcanvas-start"
+             tabindex="-1"
+             id="offcanvasWithBackdropNews"
+             aria-labelledby="offcanvasWithBackdropLabelNews"
+             style="width: 60%">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">
+                    Thông tin sản phẩm
+                </h5>
+                <button type="button"
+                        class="btn-close text-reset"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+    </div>
+    <div class="col-6 product">
+        <h3>
+            @Model.ProductName
+        </h3>
+        <div class="price">
+            @if (Model.OldPrice != 0 && Model.CurrentPrice != 0)
+            {
+                <p class="root">@(Model.OldPrice.HasValue ? Model.OldPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</p>
+                <div class="discount">
+                    <h3>@(Model.CurrentPrice.HasValue ? Model.CurrentPrice.Value.ToString("#,##0", new CultureInfo("vi-VN")) : "N/A") đ</h3> <span>
+                        @(
+        Model.Discount > 0
+        ? $"-{Model.Discount}%"
+        : ""
+    )
+                    </span>
+                </div>
+            }
+            else
+            {
+                <p class="root" style="height : 16px"></p>
+
+                <div class="discount">
+                    <h4>Liên hệ</h4>
+                </div>
+            }
+
+
+        </div>
+        <div class="detail-item__title">
+            <div class="title">
+                <span>Màn hình</span>@Model.Screen @Model.Resolution @Model.ScanFrequency
+            </div>
+            <div class="title">
+                <span>CPU</span>@Model.Technology (@Model.CacheSize, @Model.NumberOfCores, @Model.NumberOfThreads, @Model.MaxSpeed)
+            </div>
+            <div class="title">
+                <span>VGA</span>@Model.GraphicsCard
+            </div>
+            <div class="title">
+                <span>RAM</span>@Model.RAM, @Model.RAMType, @Model.RAMBusSpeed, Max @Model.MaxRAMSupport
+            </div>
+            <div class="title">
+                <span>Pin</span>@Model.BatteryInfo
+            </div>
+        </div>
+
+        <div class="promotion">
+            <ul>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Tặng ngay Voucher
+                    <strong>1.000.000 đ</strong> khi quý khách mua máy lần 2.
+                </li>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Tặng kèm Windows bản quyền
+                </li>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Bảo hành 12 tháng lỗi 1 đổi
+                    1
+                </li>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Tặng balo hoặc túi xách
+                    thời trang
+                </li>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Tặng túi chống sốc lót nỉ
+                    xịn sò
+                </li>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Chuột quang không dây + bàn
+                    di chuột
+                </li>
+                <li>
+                    <i class="fa-solid fa-gift"></i>Tặng gói cài đặt + vệ sinh,
+                    bảo dưỡng, trọn đời
+                </li>
+            </ul>
+        </div>
+
+        @using (Html.BeginForm("AddToCart", "ShoppingCart", FormMethod.Post))
+        {
+            @Html.Hidden("ProductId", Model.Id)
+            <div class="add-cart">
+                <div style="width: 100%">
+                    <label for="quantity">Số lượng :</label>
+                    <input type="number" name="Quantity" id="Quantity" min="1" value="1" />
+                    @*<input type="number" id="quantity" value="1" min="1"></input>*@
+                </div>
+                <button type="submit" class="btn btn-danger">
+                    Thêm vào giỏ hàng
+                </button>
+            </div>
+        }
+        </div>
+</div>

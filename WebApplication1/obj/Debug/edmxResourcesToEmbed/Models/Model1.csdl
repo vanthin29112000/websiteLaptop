@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CartItem">
+    <Key>
+      <PropertyRef Name="CartItemId" />
+    </Key>
+    <Property Name="CartItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="price" Type="Int32" />
+  </EntityType>
+  <EntityType Name="InvoiceDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShippingAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Technology" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOfCores" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOfThreads" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CPUSpeed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MaxSpeed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CacheSize" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RAM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RAMType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RAMBusSpeed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MaxRAMSupport" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Storage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Screen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Resolution" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ScreenTechnology" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="GraphicsCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AudioTechnology" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PortsInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="WirelessConnectivity" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Webcam" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="DimensionsAndWeight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BatteryInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="KeyboardBacklight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentPrice" Type="Int32" />
+    <Property Name="OldPrice" Type="Int32" />
+    <Property Name="Discount" Type="Double" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ImageLinks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ScanFrequency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MemoryCard" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="OtherFunction" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Material" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OperatingSystem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LaunchTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="EFFirstDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CartItems" EntityType="Self.CartItem" />
+    <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetail" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+  </EntityContainer>
+</Schema>
